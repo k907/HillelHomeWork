@@ -58,8 +58,6 @@ public class Car {
 
     double amountFuel = this.tankBalance.doubleValue() - (this.fuelConsumption.doubleValue() * distance / 100);
     amountFuel = (amountFuel < 0) ? 0 : amountFuel; // не может быть отрицательным
-
-    // System.out.println( "Остаток топлива по преодолении " + distance + " км: " + new DecimalFormat(this.patternDecimalFormat).format(amountFuel) + " литров");
     return amountFuel;
 
   }
@@ -72,7 +70,6 @@ public class Car {
   public double refuel ( double distance ) {
 
     double amountFuel = Math.abs( this.tankVolume.doubleValue() - this.getRestFuel(distance) );
-    // System.out.println("Нужно дозаправить " + new DecimalFormat(this.patternDecimalFormat).format(amountFuel) + " литров");
     return amountFuel;
 
   }
@@ -110,7 +107,7 @@ class Run {
     // расстояние от Жашкова до Киева
     final double distanceZhashkovKiev = 149.5d;
 
-    Car newCar = new Car(70, 20, 10);
+    Car newCar = new Car(70, 60, 10);
 
     // ----- маршрут от Одессы до Кривого Озеро ----- //
 
