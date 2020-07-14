@@ -3,7 +3,7 @@ package Lessons_6;
 /**
  * Данный интерфейс описывает поведение животного
  */
-public interface IAnamal {
+public interface IAnimal {
 
   /**
    *  подать голос

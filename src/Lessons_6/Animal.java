@@ -1,9 +1,9 @@
 package Lessons_6;
 
 /**
- *  Animal имплементирует интерфейс IAnamal
+ *  Animal имплементирует интерфейс IAnimal
  */
-public class Animal implements IAnamal  {
+public class Animal implements IAnimal {
 
   private int id;
   private int age;

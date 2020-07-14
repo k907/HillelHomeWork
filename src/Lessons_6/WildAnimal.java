@@ -1,10 +1,10 @@
 package Lessons_6;
 
-public class WildAimal extends Animal {
+public class WildAnimal extends Animal {
 
   private boolean isPredator;
 
-  public WildAimal(int age, int weight, String color, boolean isPredator) {
+  public WildAnimal(int age, int weight, String color, boolean isPredator) {
     super( age, weight, color);
     this.isPredator = isPredator;
   }
