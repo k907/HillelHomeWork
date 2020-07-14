@@ -1,10 +1,13 @@
-package Lessons_5;
+package Lessons_6;
+
+import Lessons_5.*;
 
 public class RunAnimal {
 
   public static void main(String[] args) {
 
     Animal animal = new Animal(5,6, "brown");
+
     WildAimal wildAnimal = new WildAimal(15,50, "red", true);
     Pet pet = new Pet ("Paw",5, 15, "black");
     Dog dog = new Dog ("Figaro",5, 15, "black");
@@ -40,6 +43,7 @@ public class RunAnimal {
     System.out.println("Hamster: " + hamster.voice() );
 
     System.out.println("GuideDog: " + guideDog.voice() );
+    guideDog.takeHome();
 
   }
 
