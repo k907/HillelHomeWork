@@ -14,6 +14,16 @@ public class MyColection {
     private int size;
     private String[] arrayData = new String[10];
 
+    // Получить элемент по индексу
+    public String get ( int index ) throws ArrayIndexOutOfBoundsException {
+
+        if (index < 0 || index > size - 1 ) {
+            throw new ArrayIndexOutOfBoundsException ("Некорректный индекс!");
+        }
+
+        return arrayData[index];
+    }
+
     // Добавление в конец массива
     public void add ( String value ) {
 

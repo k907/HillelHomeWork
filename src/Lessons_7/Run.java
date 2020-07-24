@@ -22,7 +22,7 @@ public class Run {
     System.out.println(colection.toString());
 
     // добавим элемент по индексу
-     colection.add(20, "new_val");
+     colection.add(6, "new_val");
      System.out.println(colection.toString());
 
     // удалим элемент по индексу
@@ -32,6 +32,9 @@ public class Run {
     // удалим элемент по значению
     colection.remove ("3");
     System.out.println(colection.toString());
+
+    // Получить элемент по индексу
+    System.out.println( "Значение элемента с индексом 0: " + colection.get(0));
 
   }
 
