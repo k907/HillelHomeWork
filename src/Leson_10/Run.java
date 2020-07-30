@@ -8,7 +8,7 @@ public class Run {
   public static void main(String[] args) {
 
     // удаление дубликатов
-    List<String> arrList = new ArrayList();
+    // List<String> arrList = new ArrayList();
     /*
     arrList.add("1");
     arrList.add("2");
@@ -23,7 +23,15 @@ public class Run {
     System.out.println(arrList.toString());
     */
 
+    // квадратное уравнение
+    //SquareRoot.calculate(1,6,8);
 
+     String[] array = new String[10];
+     MyIterator iter = new MyIterator(array);
+
+     while (iter.hasNext()) {
+       System.out.println(iter.next());
+     }
 
   }
 }

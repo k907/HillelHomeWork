@@ -5,30 +5,29 @@ package Leson_10;
  */
 public class SquareRoot {
 
-      /*
-       получить исходнык данные a b с
-       вычислить дискрменант
-       выбрать формулу для решения
-      */
-
   public static void calculate ( int paramA, int paramB, int paramC) throws IllegalArgumentException {
 
       if ( paramA == 0 ) {
         throw new IllegalArgumentException ("Параметр 'a' не может быть равен нулю  ");
       }
 
-     // вычислить дискриминант
-     int discriminant = paramB * paramB - 4 * paramA * paramC;
+      // вычислить дискриминант
+      int discriminant = paramB * paramB - 4 * paramA * paramC;
 
       if ( discriminant < 0 ) {
 
-        System.out.println("");
+        System.out.println("У квадратного уравнения нет корней");
 
       } else if ( discriminant == 0  ) {
 
-        System.out.println("");
+        double x1 = (-1 * paramB + Math.sqrt(discriminant)) / ( 2 * paramA ) ;
+        System.out.println("У квадратного уравнения один корень: " + x1);
 
       } else {
+
+        double x1 = (-1 * paramB + Math.sqrt(discriminant)) / ( 2 * paramA ) ;
+        double x2 = (-1 * paramB - Math.sqrt(discriminant)) / ( 2 * paramA ) ;
+        System.out.println("У квадратного уравнения два корня: x1 = " + x1 + " | x2 " + x2);
 
       }
   }

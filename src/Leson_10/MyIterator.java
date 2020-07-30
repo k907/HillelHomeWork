@@ -8,6 +8,12 @@ import java.util.function.Consumer;
  */
 public class MyIterator  {
 
+  private String[] array;
+
+  MyIterator (String[] paramArray ) {
+    this.array = paramArray;
+  }
+
   public boolean hasNext() {
     return false;
   }
