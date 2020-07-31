@@ -19,7 +19,7 @@ public class MyIterator  {
     return currInd < array.length;
   }
 
-  public Object next() throws ArrayIndexOutOfBoundsException {
+  public String next() throws ArrayIndexOutOfBoundsException {
 
     if (currInd >= array.length) {
       throw new ArrayIndexOutOfBoundsException ("Индекс массива выходит за пределы");
