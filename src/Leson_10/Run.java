@@ -26,12 +26,19 @@ public class Run {
     // квадратное уравнение
     //SquareRoot.calculate(1,6,8);
 
-     String[] array = new String[10];
-     MyIterator iter = new MyIterator(array);
+    // итератор
+      String[] array = new String[10];
+      MyIterator iter = new MyIterator(array);
 
-     while (iter.hasNext()) {
-       System.out.println(iter.next());
-     }
+      array[0] = "0";
+      array[1] = "1";
+      array[2] = "2";
+      array[5] = "6";
+      array[8] = "9";
+
+       while (iter.hasNext()) {
+         System.out.println(iter.next());
+       }
 
   }
 }
