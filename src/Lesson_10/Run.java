@@ -1,7 +1,4 @@
-package Leson_10;
-
-import java.util.ArrayList;
-import java.util.List;
+package Lesson_10;
 
 public class Run {
 

@@ -1,4 +1,4 @@
-package Leson_10;
+package Lesson_10;
 
 import java.util.*;
 
@@ -6,7 +6,6 @@ import java.util.*;
  *   Данный класс получает коллекцию объектов, а возвращает коллекцию уже без дубликатов
  */
 public class Unique {
-
 
   /**
    * Убрать дубликаты из коллекции
