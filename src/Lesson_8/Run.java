@@ -6,13 +6,13 @@ public class Run {
 
   public static void main(String[] args) {
 
-    MyColection colection = new MyColection();
+    MyCollection colection = new MyCollection();
     colection.add("0");
     colection.add("1");
     colection.add("2");
     colection.add("3");
 
-    MyColection colection2 = new MyColection();
+    MyCollection colection2 = new MyCollection();
     colection2.add("0");
     colection2.add("1");
     colection2.add("2");

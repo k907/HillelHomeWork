@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class MyColection implements ICollection {
+public class MyCollection implements ICollection {
 
   private int size;
   private Object[] arrayData = new Object[10];
@@ -52,7 +52,7 @@ public class MyColection implements ICollection {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    MyColection colection = (MyColection) o;
+    MyCollection colection = (MyCollection) o;
     return size == colection.size &&
             Arrays.equals(arrayData, colection.arrayData);
   }
