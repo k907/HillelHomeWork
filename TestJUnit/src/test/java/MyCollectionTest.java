@@ -55,8 +55,11 @@ public class MyCollectionTest {
     testCollection.add("1");
     testCollection.add("2");
 
-    // проверка возвращаемого значения
+    // проверка существующего значения
     Assertions.assertTrue (testCollection.delete("2"));
+
+    // удаление не существующего значения
+    Assertions.assertFalse(testCollection.delete("10"));
 
     // проверка изменения размера масива
     Assertions.assertEquals(1, testCollection.size());
@@ -64,6 +67,7 @@ public class MyCollectionTest {
     // проверка изменения внутреннего массива
     Object[] arrayData = getPrivateField ( "arrayData" );
     Assertions.assertArrayEquals(expected, arrayData);
+
   }
 
   @Test
