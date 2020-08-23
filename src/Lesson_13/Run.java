@@ -18,7 +18,6 @@ public class Run {
       result = IntStream.empty().average();
       System.out.println("result average: " +  (result.isPresent() ? result.getAsDouble() : "null object") );
 
-
       //----------- вариант 2 -------------//
        IntStream.range(0,100).average().ifPresentOrElse( x -> System.out.println("result average: " + x),
                                                         ()  -> System.out.println("null object") );
@@ -38,7 +37,7 @@ public class Run {
     listString.add("three");
 
     List<Pair> pair = listString.stream()
-            .map(s -> new Pair(s))
+            .map(s -> new Pair(s.toUpperCase()))
             .collect(Collectors.toList());
 
     System.out.println(pair);

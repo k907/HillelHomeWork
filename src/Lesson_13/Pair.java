@@ -6,7 +6,7 @@ public class Pair {
    private String valueLowerCase;
 
    public Pair ( String s ) {
-     valueUpperCase = s.toUpperCase();
+     valueUpperCase = s;
      valueLowerCase = s.toLowerCase();
    }
 
