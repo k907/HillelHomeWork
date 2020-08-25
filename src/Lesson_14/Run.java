@@ -20,7 +20,7 @@ public class Run {
       System.out.println("Исходный массив: " + Arrays.asList(arrInt));
       //Sorter.bubbleSort(arrInt);
 
-      Sorter.insertSort(arrInt); // существенно быстрее bubbleSort
+      Sorter.insertSort(arrInt); // существенно быстрее чем bubbleSort
       System.out.println(" Отсорт. массив: " + Arrays.asList(arrInt));
       System.out.println("--------------------------------------\n\n");
 
