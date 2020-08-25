@@ -8,8 +8,11 @@ public class Finder {
   // Бинарный поиск
   public static int binarySearch (Integer[] arrInt, int searchElem ) {
 
+<<<<<<< HEAD
     if ( !isSorted(arrInt) ) { return -1; }
 
+=======
+>>>>>>> 913a012... Home work 25/08/2020 lesson 14
     int leftBound = 0;
     int rightBound = arrInt.length-1;
 
@@ -36,8 +39,11 @@ public class Finder {
   // Интерполяционный поиск
   public static int interSearch (Integer[] arrInt, int searchElem ) {
 
+<<<<<<< HEAD
     if ( !isSorted(arrInt) ) { return -1; }
 
+=======
+>>>>>>> 913a012... Home work 25/08/2020 lesson 14
     int leftBound = 0;
     int rightBound = arrInt.length - 1;
 
@@ -69,6 +75,7 @@ public class Finder {
 
     return -1; // элемент не найден
   }
+<<<<<<< HEAD
 
 
    private static boolean isSorted (Integer[] arrInt) {
@@ -85,4 +92,6 @@ public class Finder {
    }
 
 
+=======
+>>>>>>> 913a012... Home work 25/08/2020 lesson 14
 }
