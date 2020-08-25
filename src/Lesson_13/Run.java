@@ -26,7 +26,6 @@ public class Run {
                                                     ()  -> System.out.println("null object")  );
        System.out.println("----------------------------------------\n");
 
-
     // Задача 2. Имеется коллекция из String, привести все стринги в UPPERCASE и вернуть коллекцию List<Pair>
     // in: "one", "two", ...
     // out: {"one":"ONE"}, {"two", "TWO"}, ...
