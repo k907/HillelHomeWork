@@ -8,6 +8,8 @@ public class Finder {
   // Бинарный поиск
   public static int binarySearch (Integer[] arrInt, int searchElem ) {
 
+    if ( !isSorted(arrInt) ) { return -1; }
+
     int leftBound = 0;
     int rightBound = arrInt.length-1;
 
@@ -33,6 +35,8 @@ public class Finder {
 
   // Интерполяционный поиск
   public static int interSearch (Integer[] arrInt, int searchElem ) {
+
+    if ( !isSorted(arrInt) ) { return -1; }
 
     int leftBound = 0;
     int rightBound = arrInt.length - 1;
@@ -65,4 +69,20 @@ public class Finder {
 
     return -1; // элемент не найден
   }
+
+
+   private static boolean isSorted (Integer[] arrInt) {
+
+      if ( arrInt == null ) return false;
+
+      if ( arrInt.length < 2 ) return true;
+
+      if ( arrInt[0] > arrInt[arrInt.length-1] ) {
+         return false;
+      }
+
+      return true;
+   }
+
+
 }

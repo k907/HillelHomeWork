@@ -31,6 +31,11 @@ public class Run {
 
       System.out.println("Результат: " + Finder.binarySearch(arrInt, arrInt[randIndex]) + " [binarySearch]");
       System.out.println("Результат: " + Finder.interSearch(arrInt, arrInt[randIndex]) + " [interSearch]");
+
+
+    Arrays.binarySearch(arrInt, 5);
+
+
     }
 
 }
