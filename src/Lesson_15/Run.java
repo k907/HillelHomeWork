@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Run {
 
     public static void main(String[] args) {
+
         System.out.println("Введите целое число:");
         var scanner = new Scanner(System.in);
         if (scanner.hasNextInt()) {

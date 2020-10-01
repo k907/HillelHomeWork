@@ -7,16 +7,16 @@ import java.util.concurrent.TimeUnit;
 public class Painter {
 
     // символ для отрисовки цифр
-    private static String symbol = "@";
+    private static final String symbol = "@";
 
     // задержка отрисовки в милесекундах
-    private static int renderingDelay = 200;
+    private static final int renderingDelay = 200;
 
     // разделитель цифр, для вывода в одну строку
-    private static String separatorNumbers = "  ";
+    private static final String separatorNumbers = "  ";
 
     // схемы для отображения цифр
-    private static  String[][] arrDigitPatterns =  {
+    private static  final String[][] arrDigitPatterns =  {
             {"*$$$$*","$$**$$","$$**$$","$$**$$","*$$$$*"},
             {"**$$**","*$$$**","$*$$**","**$$**","$$$$$$"},
             {"*$$$$*","$$**$$","***$$*","**$$**","$$$$$$"},
@@ -54,24 +54,24 @@ public class Painter {
 
     //----------------------------------------
     // нарисовать цифры построчно
-    private static void drawDigits( ArrayList listLine )  {
+    private static void drawDigits( ArrayList<String> listLine )  {
 
-        for (int i = 0; i < listLine.size(); i++) {
+        for (String s : listLine) {
 
-            String currLine = (String) listLine.get(i);
-            currLine = currLine.replace("*"," ");
-            currLine = currLine.replace("$",symbol);
+            String currLine = (String) s;
+            currLine = currLine.replace("*", " ");
+            currLine = currLine.replace("$", symbol);
             System.out.println(currLine);
 
             // пауза для плавной отрисовки
-            sleep(renderingDelay);
+            sleep();
         }
     }
     //----------------------------------------
-    private static void sleep (int time) {
+    private static void sleep() {
 
         try {
-            TimeUnit.MILLISECONDS.sleep(time);
+            TimeUnit.MILLISECONDS.sleep(renderingDelay);
         } catch ( InterruptedException ex ) {
             System.out.println(ex.getMessage());
         }
