@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.Random;
 
-
 public class Run {
 
   public static void main(String[] args) {
@@ -20,11 +19,9 @@ public class Run {
       System.out.println("Исходный массив: " + Arrays.asList(arrInt));
       //Sorter.bubbleSort(arrInt);
 
-<<<<<<< HEAD
       Sorter.insertSort(arrInt); // существенно быстрее чем bubbleSort
-=======
-      Sorter.insertSort(arrInt); // существенно быстрее bubbleSort
->>>>>>> 913a012... Home work 25/08/2020 lesson 14
+
+
       System.out.println(" Отсорт. массив: " + Arrays.asList(arrInt));
       System.out.println("--------------------------------------\n\n");
 
@@ -35,11 +32,7 @@ public class Run {
 
       System.out.println("Результат: " + Finder.binarySearch(arrInt, arrInt[randIndex]) + " [binarySearch]");
       System.out.println("Результат: " + Finder.interSearch(arrInt, arrInt[randIndex]) + " [interSearch]");
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 913a012... Home work 25/08/2020 lesson 14
     }
 
 }
