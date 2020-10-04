@@ -26,14 +26,14 @@ import java.util.Scanner;
                 Если игроки сделали одинаковый выбор, засчитывается ничья и раунд переигрывается.
 
                 Победитель игры определяется по количеству выигранных раундов.
-                Для завершения игры наберите В (Выйти)
+                Для завершения игры наберите "В" (Выйти)
 
  start()  -  основной метод игры, запускает все процессы
 
  1. вывести правила в консоль showRules()
  2. предлагаем пользователю указать количество раундов
- 3. ждем ответ пользователя setNumRound(userResponse)
- 4. проверяем наличие команды от пользователя на завершение игры
+ 3. ждать ответ пользователя setNumRound(userResponse)
+ 4. проверять наличие команды от пользователя на завершение игры
  5. после получения количества раундов, меняем статус игры на "waitUserMove"
  6. предлагаем пользователю совершить ход
  7. обрабатываем ответ пользователя и завершаем игру если сыграны все раунды
@@ -47,7 +47,7 @@ public class Game {
     private final Path fileResult = Paths.get("resources\\result.txt");
 
     // форматирование времени, используется для записи в лог
-    private final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     // статус игры - waitNumRound | waitUserMove
     private String statusGame = "waitNumRound";
@@ -121,7 +121,7 @@ public class Game {
       - определить победителя раунда
 
       return false если не удалось распознать ответ пользователя (нет совпадений с к | н | б)
-     */
+    */
     private boolean play(String userResponse) {
 
         if (getMoveUser(userResponse)) {
