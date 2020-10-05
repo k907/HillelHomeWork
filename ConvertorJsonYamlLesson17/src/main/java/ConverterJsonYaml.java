@@ -88,5 +88,4 @@ public class ConverterJsonYaml {
             System.out.println(ex.getMessage());
         }
     }
-    //------------------------------------------------------------------------------
 }
