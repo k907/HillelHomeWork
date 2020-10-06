@@ -28,15 +28,15 @@ public class ConverterJsonYaml {
 
             if (normalizedNameFile.indexOf(".json") > 0) {
 
-                String contentJson = convertJsonToYaml(readToString(file));
+                String contentJson = convertJsonToYaml(UtilFile.readToString(file));
                 newFile = newFile + ".yaml";
-                writeToFile(Paths.get(newFile), contentJson);
+                UtilFile.writeToFile(Paths.get(newFile), contentJson);
 
             } else if (normalizedNameFile.indexOf(".yaml") > 0) {
 
-                String contentJson = convertYamlToJson(readToString(file));
+                String contentJson = convertYamlToJson(UtilFile.readToString(file));
                 newFile = newFile + ".json";
-                writeToFile(Paths.get(newFile), contentJson);
+                UtilFile.writeToFile(Paths.get(newFile), contentJson);
 
             } else {
                 System.out.println("Неизвестный тип файла");
@@ -67,25 +67,4 @@ public class ConverterJsonYaml {
         return jsonWriter.writeValueAsString(new ObjectMapper(new YAMLFactory()).readValue(contentYaml, Object.class));
     }
 
-    //------------------------------------------------------------------------------
-    public static String readToString(Path filePath) {
-        StringBuilder contentBuilder = new StringBuilder();
-
-        try (Stream<String> stream = Files.lines(filePath, StandardCharsets.UTF_8)) {
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return contentBuilder.toString();
-    }
-
-    //------------------------------------------------------------------------------
-    public static void writeToFile(Path filePath, String content) {
-        try {
-            Files.write(filePath, content.getBytes());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 }
