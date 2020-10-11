@@ -178,23 +178,24 @@ public class Game {
     */
     private int compareMoves(String userMove, String programMove) throws IllegalStateException {
 
+        if (userMove.equals(programMove)) {
+            return -1;
+        }
+
         return switch (userMove) {
             case "Камень" -> switch (programMove) {
-                case "Камень" -> -1;
                 case "Ножницы" -> 1;
                 case "Бумага" -> 0;
                 default -> throw new IllegalStateException("Unexpected value: " + programMove);
             };
             case "Ножницы" -> switch (programMove) {
                 case "Камень" -> 0;
-                case "Ножницы" -> -1;
                 case "Бумага" -> 1;
                 default -> throw new IllegalStateException("Unexpected value: " + programMove);
             };
             case "Бумага" -> switch (programMove) {
                 case "Камень" -> 1;
                 case "Ножницы" -> 0;
-                case "Бумага" -> -1;
                 default -> throw new IllegalStateException("Unexpected value: " + programMove);
             };
             default -> throw new IllegalStateException("Unexpected value: " + userMove);
