@@ -23,7 +23,7 @@ public class StudentRepository extends BaseRepository implements ITableOperation
         }
 
         // закрыть соединение с базой
-        super.close();
+        close();
         return optionalStudent;
     }
 
