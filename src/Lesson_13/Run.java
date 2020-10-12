@@ -9,7 +9,7 @@ public class Run {
 
   public static void main(String[] args) {
 
-    // Задача 1. Имеется коллекция из Integes, использую стримы посчитать среденее значения всех чисел
+    // Задача 1. Имеется коллекция из Integes, используя стримы посчитать среденее значения всех чисел
 
       //----------- вариант 1 -------------//
       OptionalDouble result = IntStream.range(0,100).average();
