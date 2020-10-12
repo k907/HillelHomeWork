@@ -8,6 +8,7 @@ public class BaseRepository {
     private static final String URL = "jdbc:mysql://localhost:3306/student";
     private static final String USER = "root";
     private static final String PASS = "198918";
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private Connection connection;
 
     //  новое соединения с базой
@@ -45,13 +46,13 @@ public class BaseRepository {
     }
 
     private void getConnection() throws SQLException {
-        regDriver();
+        registrationDriver();
         connection = DriverManager.getConnection(URL + "?" + "useSSL=false&user=" + USER + "&password=" + PASS + "&serverTimezone=UTC");
     }
 
-    private void regDriver() {
+    private void registrationDriver() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(DRIVER);
         } catch (ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         }
