@@ -23,7 +23,7 @@ public class StudentRepository extends BaseRepository implements ITableOperation
         }
 
         // закрыть соединение с базой
-        close();
+        closeConnection();
         return optionalStudent;
     }
 
@@ -43,7 +43,7 @@ public class StudentRepository extends BaseRepository implements ITableOperation
         }
 
         // закрыть соединение с базой
-        close();
+        closeConnection();
         return optionalStudent;
     }
 
@@ -68,7 +68,6 @@ public class StudentRepository extends BaseRepository implements ITableOperation
     // В базе установлен автоинкремент поля id, поэтому соответствующее свойство объекта Student не учитывается
     @Override
     public boolean add(Student model) throws SQLException {
-
         String sqlQuery = "INSERT INTO student.students (full_name, group_id, year_admission ) VALUES ( '" + model.getFull_name() + "', " + model.getGroup_id() + ", " + model.getYear_admission() + ");";
         return executeUpdate(sqlQuery) > 0;
     }
@@ -76,10 +75,8 @@ public class StudentRepository extends BaseRepository implements ITableOperation
     //---------------------------------------------------
     @Override
     public boolean delete(Student model) throws SQLException {
-
         String sqlQuery = "DELETE FROM student.students WHERE id = " + model.getId() + ";";
         return executeUpdate(sqlQuery) > 0;
-
     }
 
     //---------------------------------------------------

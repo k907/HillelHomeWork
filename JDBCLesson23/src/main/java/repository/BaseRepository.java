@@ -19,7 +19,7 @@ public class BaseRepository {
     }
 
     // закрыть соеденеие с базой
-    void close() {
+    void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
@@ -34,7 +34,7 @@ public class BaseRepository {
     int executeUpdate(String sqlQuery) throws SQLException {
         reopenConnection();
         int res = connection.createStatement().executeUpdate(sqlQuery);
-        this.close();
+        this.closeConnection();
         return res;
     }
 
