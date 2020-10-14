@@ -16,35 +16,35 @@ public class Painter {
     private static final String separatorNumbers = "  ";
 
     // схемы для отображения цифр
-    private static  final String[][] arrDigitPatterns =  {
-            {"*$$$$*","$$**$$","$$**$$","$$**$$","*$$$$*"},
-            {"**$$**","*$$$**","$*$$**","**$$**","$$$$$$"},
-            {"*$$$$*","$$**$$","***$$*","**$$**","$$$$$$"},
-            {"*$$$$*","$$**$$","***$$*","$$**$$","*$$$$*"},
-            {"$$**$$","$$**$$","$$$$$$","****$$","****$$"},
-            {"$$$$$$","$$****","$$$$$*","****$$","$$$$$*"},
-            {"*$$$$$","$$****","$$$$$*","$$**$$","*$$$$*"},
-            {"$$$$$$","***$$*","**$$**","*$$***","$$****"},
-            {"*$$$$*","$$**$$","*$$$$*","$$**$$","*$$$$*"},
-            {"*$$$$$","$$**$$","*$$$$$","****$$","*$$$$*"}};
+    private static final String[][] arrDigitPatterns = {
+            {"*$$$$*", "$$**$$", "$$**$$", "$$**$$", "*$$$$*"},
+            {"**$$**", "*$$$**", "$*$$**", "**$$**", "$$$$$$"},
+            {"*$$$$*", "$$**$$", "***$$*", "**$$**", "$$$$$$"},
+            {"*$$$$*", "$$**$$", "***$$*", "$$**$$", "*$$$$*"},
+            {"$$**$$", "$$**$$", "$$$$$$", "****$$", "****$$"},
+            {"$$$$$$", "$$****", "$$$$$*", "****$$", "$$$$$*"},
+            {"*$$$$$", "$$****", "$$$$$*", "$$**$$", "*$$$$*"},
+            {"$$$$$$", "***$$*", "**$$**", "*$$***", "$$****"},
+            {"*$$$$*", "$$**$$", "*$$$$*", "$$**$$", "*$$$$*"},
+            {"*$$$$$", "$$**$$", "*$$$$$", "****$$", "*$$$$*"}};
 
     //----------------------------------------
     // нарисовать число
-    public static void draw ( int number )  {
+    public static void draw(int number) {
 
         var scan = new Scanner(String.valueOf(number));
         scan.useDelimiter("");
 
         var listLine = new ArrayList<String>();
 
-        while ( scan.hasNext() ) {
+        while (scan.hasNext()) {
             String[] currPatternDigit = arrDigitPatterns[scan.nextInt()];
             for (int i = 0; i < 5; i++) {
 
-                if ( i >= listLine.size() ) {
-                    listLine.add(i,  separatorNumbers + currPatternDigit[i]);
+                if (i >= listLine.size()) {
+                    listLine.add(i, separatorNumbers + currPatternDigit[i]);
                 } else {
-                    listLine.set(i,  listLine.get(i) + separatorNumbers + currPatternDigit[i]);
+                    listLine.set(i, listLine.get(i) + separatorNumbers + currPatternDigit[i]);
                 }
             }
         }
@@ -54,7 +54,7 @@ public class Painter {
 
     //----------------------------------------
     // нарисовать цифры построчно
-    private static void drawDigits( ArrayList<String> listLine )  {
+    private static void drawDigits(ArrayList<String> listLine) {
 
         for (String s : listLine) {
 
@@ -67,12 +67,13 @@ public class Painter {
             sleep();
         }
     }
+
     //----------------------------------------
     private static void sleep() {
 
         try {
             TimeUnit.MILLISECONDS.sleep(renderingDelay);
-        } catch ( InterruptedException ex ) {
+        } catch (InterruptedException ex) {
             System.out.println(ex.getMessage());
         }
     }
