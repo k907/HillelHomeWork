@@ -1,6 +1,9 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
 import model.Student;
 import service.UniversityService;
+import util.Сonfigurator;
 
+import java.nio.file.Paths;
 import java.sql.*;
 
 /*
@@ -24,7 +27,10 @@ import java.sql.*;
  */
 public class University {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, JsonProcessingException {
+
+        Сonfigurator.fileSettings = Paths.get("C:\\Users\\k907\\IdeaProjects\\HillelHomeWork\\JDBCLesson23\\src\\main\\resources\\settings.json");
+        Сonfigurator.run();
 
         UniversityService us = new UniversityService();
 
@@ -54,5 +60,7 @@ public class University {
         System.out.println("Удалить студента id " + id);
         if (us.deleteStudent(id))
             System.out.println("Успешно удалили студента");
+
+
     }
 }

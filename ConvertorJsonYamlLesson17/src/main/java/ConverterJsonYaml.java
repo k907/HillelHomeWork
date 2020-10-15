@@ -58,13 +58,10 @@ public class ConverterJsonYaml {
         ObjectMapper yamlWriter = new ObjectMapper(new YAMLFactory());
         return yamlWriter.writeValueAsString(new ObjectMapper().readValue(contentJson, Object.class));
     }
-
     //------------------------------------------------------------------------------
     private static String convertYamlToJson(String contentYaml) throws JsonProcessingException {
-
         System.out.println("Конвертация Yaml в JSON");
         ObjectMapper jsonWriter = new ObjectMapper();
         return jsonWriter.writeValueAsString(new ObjectMapper(new YAMLFactory()).readValue(contentYaml, Object.class));
     }
-
 }

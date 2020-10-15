@@ -1,25 +1,26 @@
-package repository;
+package util;
 
-import java.sql.*;
+import java.lang.module.Configuration;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import util.Сonfigurator;
 
-//  методы данного класса будут доступны только внутри пакета
-public class BaseRepository {
+public class DataBaseManager {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/student";
-    private static final String USER = "root";
-    private static final String PASS = "198918";
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private Connection connection;
 
     //  новое соединения с базой
     void reopenConnection() throws SQLException {
+
         if (connection == null || connection.isClosed()) {
             getConnection();
         }
     }
 
     // закрыть соеденеие с базой
-    void closeConnection() {
+    protected void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
@@ -31,7 +32,7 @@ public class BaseRepository {
 
     // выполнить SQL запрос (СУБД не возвращает ответ)
     // return int - количество строк, которое изменил sql запрос
-    int executeUpdate(String sqlQuery) throws SQLException {
+    protected int executeUpdate(String sqlQuery) throws SQLException {
         reopenConnection();
         int res = connection.createStatement().executeUpdate(sqlQuery);
         this.closeConnection();
@@ -40,19 +41,21 @@ public class BaseRepository {
 
     // выполнить SQL запрос (СУБД вернет ответ)
     // после обработки ответа, соединение нужно закрыть
-    ResultSet executeQuery(String sqlQuery) throws SQLException {
+    protected ResultSet executeQuery(String sqlQuery) throws SQLException {
         reopenConnection();
         return connection.createStatement().executeQuery(sqlQuery);
     }
 
     private void getConnection() throws SQLException {
         registrationDriver();
-        connection = DriverManager.getConnection(URL + "?" + "useSSL=false&user=" + USER + "&password=" + PASS + "&serverTimezone=UTC");
+        connection = DriverManager.getConnection(Сonfigurator.configDataBase.getUrl() + "?"
+                                    + "useSSL=false&user=" + Сonfigurator.configDataBase.getUser()
+                                    + "&password=" + Сonfigurator.configDataBase.getPass() + "&serverTimezone=UTC");
     }
 
     private void registrationDriver() {
         try {
-            Class.forName(DRIVER);
+            Class.forName(Сonfigurator.configDataBase.getDriver());
         } catch (ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         }

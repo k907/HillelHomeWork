@@ -1,12 +1,13 @@
 package repository;
 
 import model.Student;
+import util.DataBaseManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-public class StudentRepository extends BaseRepository implements ITableOperations<Student> {
+public class StudentRepository extends DataBaseManager implements ITableOperations<Student> {
 
     // ищет студента по full_name
     public Optional<Student> get(String full_name) throws SQLException {
