@@ -15,9 +15,6 @@ public class Сonfigurator {
     public static Path fileSettings;
     public static Config configDataBase;
 
-    /**
-     *  инициализирует свойства класса
-     */
     public static void run() throws JsonProcessingException {
 
         if (Files.exists(fileSettings) && !Files.isDirectory(fileSettings)) {
