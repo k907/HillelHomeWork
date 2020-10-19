@@ -1,6 +1,8 @@
 package repository;
 
 import model.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import util.DataBaseManager;
 
 import java.sql.ResultSet;
@@ -9,7 +11,12 @@ import java.util.*;
 
 public class StudentRepository extends DataBaseManager implements ITableOperations<Student> {
 
-    // ищет студента по full_name
+    /**
+     * Получить студента по full_name
+     *
+     * @param full_name ФИО студента
+     * @throws SQLException
+     */
     public Optional<Student> get(String full_name) throws SQLException {
 
         Optional<Student> optionalStudent = Optional.empty();
@@ -30,6 +37,11 @@ public class StudentRepository extends DataBaseManager implements ITableOperatio
 
     //---------------------------------------------------
     @Override
+    /**
+     * Получить студента по id
+     *
+     * @param id id студента в базе данных
+     */
     public Optional<Student> get(int id) throws SQLException {
 
         Optional<Student> optionalStudent = Optional.empty();
@@ -50,6 +62,9 @@ public class StudentRepository extends DataBaseManager implements ITableOperatio
 
     //---------------------------------------------------
     @Override
+    /**
+     *  Получить всех студентов
+     */
     public ArrayList<Student> getAll() throws SQLException {
 
         ArrayList<Student> listStudents = new ArrayList();
@@ -66,7 +81,14 @@ public class StudentRepository extends DataBaseManager implements ITableOperatio
     }
 
     //---------------------------------------------------
-    // В базе установлен автоинкремент поля id, поэтому соответствующее свойство объекта Student не учитывается
+
+    /**
+     * Добавить студента в базу данных
+     * В базе установлен автоинкремент поля id, поэтому соответствующее свойство объекта Student не учитывается
+     *
+     * @param model экземпляр класса Student
+     * @throws SQLException
+     */
     @Override
     public boolean add(Student model) throws SQLException {
         String sqlQuery = "INSERT INTO student.students (full_name, group_id, year_admission ) VALUES ( '" + model.getFull_name() + "', " + model.getGroup_id() + ", " + model.getYear_admission() + ");";
@@ -75,6 +97,11 @@ public class StudentRepository extends DataBaseManager implements ITableOperatio
 
     //---------------------------------------------------
     @Override
+    /**
+     *  Удалить студента
+     *
+     * @param model экземпляр класса Student
+     */
     public boolean delete(Student model) throws SQLException {
         String sqlQuery = "DELETE FROM student.students WHERE id = " + model.getId() + ";";
         return executeUpdate(sqlQuery) > 0;
@@ -82,6 +109,11 @@ public class StudentRepository extends DataBaseManager implements ITableOperatio
 
     //---------------------------------------------------
     @Override
+    /**
+     *  Удалить студента
+     *
+     * @param id id студента в базе данных
+     */
     public boolean delete(int id) throws SQLException {
         String sqlQuery = "DELETE FROM student.students WHERE id = " + id + ";";
         return executeUpdate(sqlQuery) > 0;

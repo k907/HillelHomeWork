@@ -1,17 +1,23 @@
 package util;
 
-import java.lang.module.Configuration;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import util.Сonfigurator;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DataBaseManager {
 
+    private final Logger logger = LoggerFactory.getLogger(DataBaseManager.class);
     private Connection connection;
 
-    //  новое соединения с базой
+    /**
+     * Новое соединения с базой
+     *
+     * @throws SQLException
+     */
     void reopenConnection() throws SQLException {
 
         if (connection == null || connection.isClosed()) {
@@ -19,19 +25,26 @@ public class DataBaseManager {
         }
     }
 
-    // закрыть соеденеие с базой
+    /**
+     *  Закрыть соеденеие с базой
+     */
     protected void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
             }
         } catch (SQLException ex) {
-            System.out.println("Ошибка закрытия соединения с базой даных " + ex.getMessage());
+            logger.error("Ошибка закрытия соединения с базой даных ", ex);
         }
     }
 
-    // выполнить SQL запрос (СУБД не возвращает ответ)
-    // return int - количество строк, которое изменил sql запрос
+    /**
+     * Выполнить SQL запрос (СУБД не возвращает ответ)
+     *
+     * @param sqlQuery
+     * @return количество строк, которое изменил sql запрос
+     * @throws SQLException
+     */
     protected int executeUpdate(String sqlQuery) throws SQLException {
         reopenConnection();
         int res = connection.createStatement().executeUpdate(sqlQuery);
@@ -39,23 +52,38 @@ public class DataBaseManager {
         return res;
     }
 
-    // выполнить SQL запрос (СУБД вернет ответ)
-    // после обработки ответа, соединение нужно закрыть
+    /**
+     *  Выполнить SQL запрос (СУБД вернет ответ)
+     *  После обработки ответа, соединение нужно закрыть
+     *
+     * @param sqlQuery
+     * @return ответ СУБД
+     * @throws SQLException
+     */
     protected ResultSet executeQuery(String sqlQuery) throws SQLException {
         reopenConnection();
         return connection.createStatement().executeQuery(sqlQuery);
     }
 
+    /**
+     * Подключиться к базе данных
+     * Конфигурацию для подключения получить из Сonfigurator
+     *
+     * @throws SQLException
+     */
     private void getConnection() throws SQLException {
         registrationDriver();
-        connection = DriverManager.getConnection(Сonfigurator.configDataBase.getUrl() + "?"
-                                    + "useSSL=false&user=" + Сonfigurator.configDataBase.getUser()
-                                    + "&password=" + Сonfigurator.configDataBase.getPass() + "&serverTimezone=UTC");
+        connection = DriverManager.getConnection(Сonfigurator.getUrl() + "?"
+                                    + "useSSL=false&user=" + Сonfigurator.getUser()
+                                    + "&password=" + Сonfigurator.getPass() + "&serverTimezone=UTC");
     }
 
+    /**
+     *  Регистрация драйвера базы данных
+     */
     private void registrationDriver() {
         try {
-            Class.forName(Сonfigurator.configDataBase.getDriver());
+            Class.forName(Сonfigurator.getDriver());
         } catch (ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
         }

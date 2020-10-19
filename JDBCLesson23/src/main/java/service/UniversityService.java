@@ -1,6 +1,8 @@
 package service;
 
 import model.Student;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import repository.StudentRepository;
 
 import java.sql.SQLException;
@@ -9,15 +11,20 @@ import java.util.Optional;
 
 public class UniversityService {
 
-    private static final StudentRepository sRepository = new StudentRepository();
+    private final Logger logger = LoggerFactory.getLogger(UniversityService.class);
+    private final StudentRepository sRepository = new StudentRepository();
 
-    // получить студента по ФИО
+    /**
+     * Получить студента по ФИО
+     *
+     * @param fio  ФИО студента
+     */
     public Optional<Student> getStudentByFio(String fio) {
 
         try {
             return sRepository.get(fio);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            logger.error("Ошибка при получении студента из базы данных", ex);
         }
 
         return Optional.empty();
@@ -25,33 +32,43 @@ public class UniversityService {
 
     //---------------------------------------------------
 
-    // получить студента по id
+    /**
+     * Получить студента по id
+     *
+     * @param id id студента в базе данных
+     */
     public Optional<Student> getStudentById(int id) {
 
         try {
             return sRepository.get(id);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            logger.error("Ошибка при получении студента из базы данных", ex);
         }
 
         return Optional.empty();
     }
     //---------------------------------------------------
 
-    // получить всех студентов
+    /**
+     * Получить всех студентов
+     */
     public ArrayList<Student> getAllStudent() {
 
         try {
             return sRepository.getAll();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            logger.error("Ошибка при получении студентов из базы данных", ex);
         }
 
         return new ArrayList<>();
     }
     //---------------------------------------------------
 
-    //  добавить студента в базу студентов
+    /**
+     *  Добавить студента в базу даных
+     *
+     * @param s экземпляр класса Student
+     */
     public boolean addStudent(Student s) {
 
         if (!validationData(s)) {
@@ -61,14 +78,20 @@ public class UniversityService {
         try {
             return sRepository.add(s);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            logger.error("Ошибка при добавлении студента в базу данных", ex);
         }
 
         return false;
     }
 
     //---------------------------------------------------
-    // Имя студента не может быть пустым
+
+    /**
+     * Валидация данных о студенте
+     * Имя студента не может быть пустым
+     *
+     * @param s экземпляр класса Student
+     */
     public boolean validationData(Student s) {
 
         if (s.getFull_name().isEmpty()) {
@@ -78,13 +101,18 @@ public class UniversityService {
     }
     //---------------------------------------------------
 
-    //  удалить студента по id
+    /**
+     * Удалить студента по id
+     *
+     * @param id id студента в базе данных
+     * @return
+     */
     public boolean deleteStudent(int id) {
 
         try {
             return sRepository.delete(id);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            logger.error("Ошибка при удалении студента из базы данных", ex);
         }
 
         return false;
@@ -92,13 +120,17 @@ public class UniversityService {
 
     //---------------------------------------------------
 
-    //  удалить студента используя объект
+    /**
+     * Удалить студента используя экземпляр класса Student
+     *
+     * @param s экземпляр класса Student
+     */
     public boolean deleteStudent(Student s) {
 
         try {
             return sRepository.delete(s);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            logger.error("Ошибка при удалении студента из базы данных", ex);
         }
 
         return false;

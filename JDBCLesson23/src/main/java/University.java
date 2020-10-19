@@ -1,10 +1,13 @@
+
+
 import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.extern.slf4j.Slf4j;
 import model.Student;
 import service.UniversityService;
 import util.Сonfigurator;
 
 import java.nio.file.Paths;
-import java.sql.*;
+import java.sql.SQLException;
 
 /*
     Попытался реализовать 3 уровневую архитектуру приложения, Model / Service / Repository
@@ -25,42 +28,42 @@ import java.sql.*;
     По аналогии можно создать репозитории для каждой таблицы базы.
 
  */
+@Slf4j
 public class University {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException, JsonProcessingException {
+   public static void main(String[] args) throws SQLException, ClassNotFoundException, JsonProcessingException {
 
-        Сonfigurator.fileSettings = Paths.get("C:\\Users\\k907\\IdeaProjects\\HillelHomeWork\\JDBCLesson23\\src\\main\\resources\\settings.json");
+        Сonfigurator.fileSettings = Paths.get("C:\\Users\\k907\\IdeaProjects\\HillelHomeWork\\JDBCLesson23\\src\\main\\resources\\settings.yaml");
         Сonfigurator.run();
 
         UniversityService us = new UniversityService();
 
-        System.out.println("Студент с ФИО  \"Semenov Semen\":");
-        us.getStudentByFio("Semenov Semen").ifPresentOrElse(x -> System.out.println(x.toString()),
-                                                            () -> System.out.println("null object"));
-        System.out.println("------------------------------------------");
+        log.info("Студент с ФИО  \"Semenov Semen\":");
+        us.getStudentByFio("Semenov Semen").ifPresentOrElse(x -> log.info(x.toString()),
+                                                            () -> log.info("null object"));
+        log.info("------------------------------------------");
 
-        System.out.println("Студент с id = 3:");
-        us.getStudentById(3).ifPresentOrElse(x -> System.out.println(x.toString()),
-                () -> System.out.println("null object"));
-        System.out.println("------------------------------------------");
+        log.info("Студент с id = 3:");
+        us.getStudentById(3).ifPresentOrElse(x ->log.info(x.toString()),
+                () -> log.info("null object"));
+        log.info("------------------------------------------");
 
-        System.out.println("Все студенты:");
-        us.getAllStudent().stream().forEach(x -> System.out.println(x.toString()));
-        System.out.println("------------------------------------------");
+        log.info("Все студенты:");
+        us.getAllStudent().stream().forEach(x -> log.info(x.toString()));
+        log.info("------------------------------------------");
 
-        System.out.println("Добавить студента \"Igor Trofimov\":");
+        log.info("Добавить студента \"Igor Trofimov\":");
         us.addStudent(new Student(100, "Igor Trofimov", 2, 2021));
-        System.out.println("------------------------------------------");
+        log.info("------------------------------------------");
 
-        System.out.println("Все студенты:");
-        us.getAllStudent().stream().forEach(x -> System.out.println(x.toString()));
+        log.info("Все студенты:");
+        us.getAllStudent().stream().forEach(x -> log.info(x.toString()));
 
-        System.out.println("------------------------------------------");
+        log.info("------------------------------------------");
         int id = 11;
-        System.out.println("Удалить студента id " + id);
+        log.info("Удалить студента id " + id);
         if (us.deleteStudent(id))
-            System.out.println("Успешно удалили студента");
-
+           log.info("Успешно удалили студента");
 
     }
 }
