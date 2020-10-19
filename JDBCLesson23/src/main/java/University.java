@@ -31,7 +31,7 @@ import java.sql.SQLException;
 @Slf4j
 public class University {
 
-   public static void main(String[] args) throws SQLException, ClassNotFoundException, JsonProcessingException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, JsonProcessingException {
 
         Сonfigurator.fileSettings = Paths.get("C:\\Users\\k907\\IdeaProjects\\HillelHomeWork\\JDBCLesson23\\src\\main\\resources\\settings.yaml");
         Сonfigurator.run();
@@ -40,11 +40,11 @@ public class University {
 
         log.info("Студент с ФИО  \"Semenov Semen\":");
         us.getStudentByFio("Semenov Semen").ifPresentOrElse(x -> log.info(x.toString()),
-                                                            () -> log.info("null object"));
+                () -> log.info("null object"));
         log.info("------------------------------------------");
 
         log.info("Студент с id = 3:");
-        us.getStudentById(3).ifPresentOrElse(x ->log.info(x.toString()),
+        us.getStudentById(3).ifPresentOrElse(x -> log.info(x.toString()),
                 () -> log.info("null object"));
         log.info("------------------------------------------");
 
@@ -63,7 +63,7 @@ public class University {
         int id = 11;
         log.info("Удалить студента id " + id);
         if (us.deleteStudent(id))
-           log.info("Успешно удалили студента");
+            log.info("Успешно удалили студента");
 
     }
 }

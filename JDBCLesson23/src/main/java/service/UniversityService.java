@@ -17,7 +17,7 @@ public class UniversityService {
     /**
      * Получить студента по ФИО
      *
-     * @param fio  ФИО студента
+     * @param fio ФИО студента
      */
     public Optional<Student> getStudentByFio(String fio) {
 
@@ -65,7 +65,7 @@ public class UniversityService {
     //---------------------------------------------------
 
     /**
-     *  Добавить студента в базу даных
+     * Добавить студента в базу даных
      *
      * @param s экземпляр класса Student
      */

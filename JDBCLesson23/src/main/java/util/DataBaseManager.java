@@ -26,7 +26,7 @@ public class DataBaseManager {
     }
 
     /**
-     *  Закрыть соеденеие с базой
+     * Закрыть соеденеие с базой
      */
     protected void closeConnection() {
         try {
@@ -53,8 +53,8 @@ public class DataBaseManager {
     }
 
     /**
-     *  Выполнить SQL запрос (СУБД вернет ответ)
-     *  После обработки ответа, соединение нужно закрыть
+     * Выполнить SQL запрос (СУБД вернет ответ)
+     * После обработки ответа, соединение нужно закрыть
      *
      * @param sqlQuery
      * @return ответ СУБД
@@ -74,12 +74,12 @@ public class DataBaseManager {
     private void getConnection() throws SQLException {
         registrationDriver();
         connection = DriverManager.getConnection(Сonfigurator.getUrl() + "?"
-                                    + "useSSL=false&user=" + Сonfigurator.getUser()
-                                    + "&password=" + Сonfigurator.getPass() + "&serverTimezone=UTC");
+                + "useSSL=false&user=" + Сonfigurator.getUser()
+                + "&password=" + Сonfigurator.getPass() + "&serverTimezone=UTC");
     }
 
     /**
-     *  Регистрация драйвера базы данных
+     * Регистрация драйвера базы данных
      */
     private void registrationDriver() {
         try {

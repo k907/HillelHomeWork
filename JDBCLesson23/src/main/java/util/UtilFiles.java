@@ -39,7 +39,7 @@ public class UtilFiles {
      * Запись в файл
      *
      * @param filePath путь к файлу
-     * @param content контент для записи в файл
+     * @param content  контент для записи в файл
      */
     public static void writeToFile(Path filePath, String content) {
         try {
