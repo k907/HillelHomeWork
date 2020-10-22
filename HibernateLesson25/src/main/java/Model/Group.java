@@ -1,10 +1,11 @@
-package Entity;
+package Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -20,5 +21,10 @@ public class Group {
 
     @Column(name = "name_group")
     private String name_group;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            mappedBy = "group",
+            cascade = CascadeType.PERSIST)
+    private List<Student> students;
 
 }

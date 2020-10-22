@@ -1,6 +1,6 @@
 package Service;
 
-import Entity.Student;
+import Model.Student;
 import Util.HibernateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;

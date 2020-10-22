@@ -1,8 +1,10 @@
-import Entity.Student;
+import Model.Student;
 import Service.UniversityService;
 import Util.HibernateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
+
+import java.util.List;
 
 @Slf4j
 public class University {
@@ -10,6 +12,10 @@ public class University {
     public static void main(String[] args) {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
+
+//       List<Student> list = session.createQuery(" From Student as s WHERE s.full_name = 'Ivan2 Ivanov2' ").list();
+        List<Student> list = session.createQuery(" From Student ").list();
+        list.stream().forEach(x -> log.info(x.toString()));
 
 /*
         UniversityService us = new UniversityService();
