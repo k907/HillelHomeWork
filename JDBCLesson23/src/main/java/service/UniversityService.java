@@ -3,7 +3,7 @@ package service;
 import model.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import repository.StudentRepository;
+import Repositories.StudentRepository;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

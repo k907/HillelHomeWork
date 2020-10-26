@@ -1,0 +1,6 @@
+{
+  "url_connect_db":"jdbc:mysql://localhost:3306/student",
+  "user_db":"root",
+  "pass_db":"198918",
+  "driver_db":"com.mysql.cj.jdbc.Driver"
+}
