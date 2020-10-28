@@ -29,13 +29,13 @@ public class ATM implements Runnable {
             } else {
                 getMoney(amount);
                 System.out.println("Обналичено " + amount + " грн.");
-                System.out.println("Текущий баланс: " + getBalance() + "грн.\n");
+                System.out.println("Текущий баланс: " + getBalance() + " грн.\n");
             }
 
         } else {
             putMoney(amount);
             System.out.println("Поток " + Thread.currentThread().getName() + " пополнил баланс на " + amount + " грн.");
-            System.out.println("Текущий баланс: " + getBalance() + "грн.\n");
+            System.out.println("Текущий баланс: " + getBalance() + " грн.\n");
         }
     }
 

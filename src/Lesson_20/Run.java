@@ -4,7 +4,11 @@ public class Run {
 
     public static void main(String[] args) {
 
-        System.out.println("test");
+        Buffer buffer = new Buffer(5);
+
+        Thread producer = new Thread(new Producer());
+        Thread consumer = new Thread(new Consumer());
+
 
     }
 }
