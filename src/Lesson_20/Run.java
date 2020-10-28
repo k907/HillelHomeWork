@@ -6,9 +6,11 @@ public class Run {
 
         Buffer buffer = new Buffer(5);
 
-        Thread producer = new Thread(new Producer());
-        Thread consumer = new Thread(new Consumer());
+        Thread producer = new Thread(new Producer(buffer));
+        Thread consumer = new Thread(new Consumer(buffer));
 
+        producer.start();
+        consumer.start();
 
     }
 }
