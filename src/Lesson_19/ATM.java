@@ -55,7 +55,7 @@ public class ATM implements Runnable {
         return amount <= getBalance();
     }
 
-    public int getRandNum(int min, int max) {
+    private int getRandNum(int min, int max) {
         max -= min;
         return (int) (Math.random() * ++max) + min;
     }
