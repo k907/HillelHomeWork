@@ -12,6 +12,7 @@ public class Consumer implements Runnable {
     public void run() {
 
         for (int i = 0; i < 10; i++) {
+
             buffer.getData();
 
             try {
@@ -19,8 +20,6 @@ public class Consumer implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
     }
-
 }
